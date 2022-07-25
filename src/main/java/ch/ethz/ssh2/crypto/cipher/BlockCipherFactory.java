@@ -32,7 +32,7 @@ public class BlockCipherFactory
 		}
 	}
 
-	private static final List<CipherEntry> ciphers = new Vector<CipherEntry>();
+	private static final List<CipherEntry> ciphers = new ArrayList<CipherEntry>();
 
 	static
 	{
@@ -75,7 +75,7 @@ public class BlockCipherFactory
 		try
 		{
 			CipherEntry ce = getEntry(type);
-			Class cc = Class.forName(ce.cipherClass);
+			Class<?> cc = Class.forName(ce.cipherClass);
 			BlockCipher bc = (BlockCipher) cc.newInstance();
 
 			if (type.endsWith("-cbc"))
